@@ -49,12 +49,12 @@ public class MapNavigatorTest {
             {0, 1, 0},
             {0, 0, 0}
         };
-        int rowTarget = 2;
+        int rowTarget = 0;
         int colTarget = 2;
         MapNavigator instance = new MapNavigator();
         int[][] expResult = new int [][] {
-            {4, 1, 0},
-            {3, 1, 1},
+            {4, Integer.MAX_VALUE, 0},
+            {3, Integer.MAX_VALUE, 1},
             {3, 2, 2}
         };
         int[][] result = instance.getNavMap(map, rowTarget, colTarget);
@@ -68,14 +68,14 @@ public class MapNavigatorTest {
         Random rand = new Random();
         for(int i=0; i<200; i++){
             for(int j=0; j<200; j++){
-                map[i][j] = rand.nextInt(1);
+                map[i][j] = rand.nextInt(2);
             }
         }
         
         MapNavigator inst = new MapNavigator();
         StopWatch timer = new StopWatch("timer");
         timer.start();
-        final int TIMES = 100;
+        final int TIMES = 10;
         for(int times=0; times<TIMES; times++){
             int [][] res = inst.getNavMap(map, 190, 190);
         }

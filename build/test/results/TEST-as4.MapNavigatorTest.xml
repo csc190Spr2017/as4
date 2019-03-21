@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="1" hostname="localhost.localdomain" name="as4.MapNavigatorTest" skipped="0" tests="2" time="0.186" timestamp="2019-03-21T20:04:24">
+<testsuite errors="0" failures="2" hostname="localhost.localdomain" name="as4.MapNavigatorTest" skipped="0" tests="2" time="0.566" timestamp="2019-03-21T20:32:18">
   <properties>
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="nb.wait.for.caches" value="true" />
@@ -41,7 +41,7 @@
     <property name="user.name" value="csc190" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner as4.MapNavigatorTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/csc190/Desktop/as4/As4/build/test/results/TEST-as4.MapNavigatorTest.xml crashfile=/home/csc190/Desktop/as4/As4/build/junitvmwatcher7652172848725834826.properties propsfile=/home/csc190/Desktop/as4/As4/build/junit1240606025467500816.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner as4.MapNavigatorTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/csc190/Desktop/as4/As4/build/test/results/TEST-as4.MapNavigatorTest.xml crashfile=/home/csc190/Desktop/as4/As4/build/junitvmwatcher768092085237568412.properties propsfile=/home/csc190/Desktop/as4/As4/build/junit7821353401101287382.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -83,6 +83,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="libs.hibernate4-persistencemodelgen.javadoc" value="" />
     <property name="libs.jaxb.javadoc" value="/usr/local/netbeans-8.2/ide/docs/jaxb-api-doc.zip" />
+    <property name="org.openide.awt.SwingBrowserImpl.do-not-block-awt" value="false" />
     <property name="ant.home" value="/usr/local/netbeans-8.2/extide/ant" />
     <property name="libs.junit_4.src" value="/usr/local/netbeans-8.2/platform/docs/junit-4.12-sources.jar" />
     <property name="libs.testng.classpath" value="/usr/local/netbeans-8.2/platform/modules/ext/testng-6.8.1-dist.jar" />
@@ -286,8 +287,8 @@
     <property name="nb.internal.action.name" value="test" />
     <property name="libs.JAXB-ENDORSED.classpath" value="/usr/local/netbeans-8.2/ide/modules/ext/jaxb/api/jaxb-api.jar" />
     <property name="libs.eclipselink.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/eclipselink/eclipselink.jar:/usr/local/netbeans-8.2/java/modules/ext/eclipselink/javax.persistence_2.1.0.v201304241213.jar:/usr/local/netbeans-8.2/java/modules/ext/eclipselink/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" />
-    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="libs.beans-binding.javadoc" value="/usr/local/netbeans-8.2/java/docs/beansbinding-1.2.1-doc.zip" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="libs.CopyLibs.classpath" value="/usr/local/netbeans-8.2/java/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar" />
     <property name="libs.spring-framework300.classpath" value="/usr/local/netbeans-8.2/ide/modules/org-apache-commons-logging.jar:/usr/local/netbeans-8.2/java/modules/ext/cglib-2.2.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-aop-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-aspects-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-beans-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-build-src-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-context-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-context-support-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-core-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-expression-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-framework-bom-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-instrument-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-instrument-tomcat-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-jdbc-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-jms-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-orm-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-oxm-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-struts-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-test-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-tx-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-web-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-webmvc-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-webmvc-portlet-3.2.7.RELEASE.jar" />
@@ -301,8 +302,8 @@
     <property name="libs.hibernate4-persistencemodelgen.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-jpamodelgen-4.3.1.Final.jar" />
     <property name="annotation.processing.source.output" value="build/generated-sources/ap-source-output" />
     <property name="main.class" value="as4.As4" />
-    <property name="build.dir" value="build" />
     <property name="libs.CopyLibs.src" value="" />
+    <property name="build.dir" value="build" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.7 compiled on April 9 2016" />
     <property name="file.encoding" value="UTF-8" />
     <property name="build.classes.excludes" value="**/*.java,**/*.form" />
@@ -311,13 +312,17 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
   </properties>
-  <testcase classname="as4.MapNavigatorTest" name="testSpeed" time="0.029" />
-  <testcase classname="as4.MapNavigatorTest" name="testGetNavMap" time="0.015">
-    <failure message="actual array was null" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: actual array was null
+  <testcase classname="as4.MapNavigatorTest" name="testSpeed" time="0.385">
+    <failure message="Too much time for 200x200 case" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Too much time for 200x200 case
+	at as4.MapNavigatorTest.testSpeed(MapNavigatorTest.java:86)
+</failure>
+  </testcase>
+  <testcase classname="as4.MapNavigatorTest" name="testGetNavMap" time="0.005">
+    <failure message="arrays first differed at element [0][0]; expected:&lt;4&gt; but was:&lt;-2147483648&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: arrays first differed at element [0][0]; expected:&lt;4&gt; but was:&lt;-2147483648&gt;
 	at as4.MapNavigatorTest.testGetNavMap(MapNavigatorTest.java:61)
 </failure>
   </testcase>
-  <system-out><![CDATA[AVG TIME: 0 millisec.
+  <system-out><![CDATA[AVG TIME: 31 millisec.
 getNavMap
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
