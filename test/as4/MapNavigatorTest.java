@@ -5,6 +5,7 @@
  */
 package as4;
 
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,15 +44,47 @@ public class MapNavigatorTest {
     @Test
     public void testGetNavMap() {
         System.out.println("getNavMap");
-        int[][] map = null;
-        int rowTarget = 0;
-        int colTarget = 0;
+        int[][] map = new int [][] {
+            {0, 1, 0},
+            {0, 1, 0},
+            {0, 0, 0}
+        };
+        int rowTarget = 2;
+        int colTarget = 2;
         MapNavigator instance = new MapNavigator();
-        int[][] expResult = null;
+        int[][] expResult = new int [][] {
+            {4, 1, 0},
+            {3, 1, 1},
+            {3, 2, 2}
+        };
         int[][] result = instance.getNavMap(map, rowTarget, colTarget);
         assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+    }
+    
+    @Test
+    public void testSpeed(){//for 200x200 matrix, has to be handled within 5 seconds
+        int [][] map = new int [200][200];
+        Random rand = new Random();
+        for(int i=0; i<200; i++){
+            for(int j=0; j<200; j++){
+                map[i][j] = rand.nextInt(1);
+            }
+        }
+        
+        MapNavigator inst = new MapNavigator();
+        StopWatch timer = new StopWatch("timer");
+        timer.start();
+        final int TIMES = 100;
+        for(int times=0; times<TIMES; times++){
+            int [][] res = inst.getNavMap(map, 190, 190);
+        }
+        timer.stop();
+        long msTotal = timer.getElapsed();
+        System.out.println("AVG TIME: " + msTotal/TIMES + " millisec.");
+        if(msTotal/TIMES>5){
+            fail("Too much time for 200x200 case");
+        }
     }
     
 }

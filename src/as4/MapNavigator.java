@@ -15,7 +15,8 @@ public class MapNavigator {
      * @param map - each cell has 0 or 1. 0 means not a block. 1 means a block.
      * @param rowTarget - target location. First dimension index.
      * @param colTarget - target location. Second dimension index.
-     * @return a 2d map where each cell represents the distance/cost to the target
+     * @return a 2d map where each cell represents the distance/cost to the target. If not reachable
+     * from target, then the distance is Integer.MAX
      */
     public int [][] getNavMap(int [][] map, int rowTarget, int colTarget){
         return null;
