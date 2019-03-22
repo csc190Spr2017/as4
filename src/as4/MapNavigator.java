@@ -5,61 +5,135 @@
  */
 package as4;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import javafx.util.Pair;
+
 /**
  * Provides the navigation service
+ *
  * @author csc190
  */
 public class MapNavigator {
-    /***
+
+    /**
+     * *
      * Generate the navigation map
+     *
      * @param map - each cell has 0 or 1. 0 means not a block. 1 means a block.
      * @param rowTarget - target location. First dimension index.
      * @param colTarget - target location. Second dimension index.
-     * @return a 2d map where each cell represents the distance/cost to the target. If not reachable
-     * from target, then the distance is Integer.MAX_VALUE;
+     * @return a 2d map where each cell represents the distance/cost to the
+     * target. If not reachable from target, then the distance is
+     * Integer.MAX_VALUE;
      */
-    public int [][] getNavMap(int [][] map, int rowTarget, int colTarget){
+    public int[][] getNavMap(int[][] map, int rowTarget, int colTarget) {
         /**
-         * Slow VERSION. Update the matrix whenever there is a neigbor that
-         * could lead to a lower value. Worst complexity O(n^2) where n is 
-         * the total number of cells.
+         * FAST Version. BFS Search (given all neighbor distance is 1). Idea:
+         * keep a queue of to be processed and keep track of the "visited" state
+         * of all cells - never process the same cell again.
          */
-        int [][] res = new int [map.length][map[0].length];
-        for(int i=0; i<map.length; i++){
-            for(int j=0; j<map[0].length; j++){
-                res[i][j] = i==rowTarget && j==colTarget? 0: Integer.MAX_VALUE;
+        int[][] res = new int[map.length][map[0].length]; //result to return
+        boolean[][] visited = new boolean[map.length][map[0].length]; //whether visited
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                res[i][j] = i == rowTarget && j == colTarget ? 0 : Integer.MAX_VALUE;
+                visited[i][j] = map[i][j] == 0 ? false : true; //don't visit blocks
             }
         }
-        
-        boolean bChanged = true;
-        while(bChanged){//continue until no changes are made in the last pass
-            bChanged = false;
-            for(int i=0; i<map.length; i++){
-                for(int j=0; j<map[0].length;j++){
-                    if(map[i][j]==0){//that is the cell can be updated
-                        //check each of its neighbor cell and see if it lead to better distance
-                        for(int offX=-1; offX<=1; offX++){
-                            for(int offY=-1; offY<=1; offY++){
-                                int nbX = i+offX;
-                                int nbY = j+offY;
-                                if(nbX<0 || nbX>=map.length || nbY<0 || nbY>=map[0].length){
-                                    continue;// invalid coordinates. 
-                                }
-                                //NOW it's valid coordinate
-                                int candidateDist = res[nbX][nbY] + 1;
-                                if(res[i][j]>candidateDist){
-                                    res[i][j] = candidateDist;
-                                    bChanged = true; 
-                                }
-                            }
-                        }
+
+        Queue<Pair<Integer, Integer>> queue = new LinkedList();
+        queue.add(new Pair(rowTarget, colTarget));
+        visited[rowTarget][colTarget] = true;
+        while (!queue.isEmpty()) {
+            Pair<Integer, Integer> pair = queue.remove();
+            int x = pair.getKey();
+            int y = pair.getValue();
+
+            //update each of its neighbors
+            for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                for (int yOffset = -1; yOffset <= 1; yOffset++) {
+                    int nbX = x + xOffset;
+                    int nbY = y + yOffset;
+                    if (nbX < 0 || nbY < 0 || nbX >= map.length || nbY >= map[0].length) {
+                        continue; //out of range
+                    }
+                    if (xOffset == 0 && yOffset == 0) {
+                        continue;
+                    }
+                    //NOW valid indexes
+                    if (map[nbX][nbY] == 0 && !visited[nbX][nbY]) {//not blocks
+                        visited[x][y] = true;
+                        int newval = res[x][y] + 1;
+                        res[nbX][nbY] = newval;
+                        queue.add(new Pair(nbX, nbY));
+
                     }
                 }
             }
-            
+
         }
+
+        return res;
+    }
+    
+    public int[][] getNavMap2(int[][] map, int rowTarget, int colTarget) {
+        /**
+         * FAST Version. BFS Search (given all neighbor distance is 1). Idea:
+         * keep a queue of to be processed and keep track of the "visited" state
+         * of all cells - never process the same cell again.
+         */
+        int[][] res = new int[map.length][map[0].length]; //result to return
+        boolean[][] visited = new boolean[map.length][map[0].length]; //whether visited
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                res[i][j] = i == rowTarget && j == colTarget ? 0 : Integer.MAX_VALUE;
+                visited[i][j] = map[i][j] == 0 ? false : true; //don't visit blocks
+            }
+        }
+
+        int [] queueX = new int[map.length*map[0].length+2];
+        int [] queueY = new int [map.length*map[0].length+2];
+        int idxHead = 0; //current one
+        int idxTail = 0; //last one
+       
         
-        
+        queueX[0] = rowTarget;
+        queueY[0] = colTarget;
+        visited[rowTarget][colTarget] = true;
+        while (idxHead<=idxTail) {
+            
+            int x = queueX[idxHead];
+            int y = queueY[idxHead];
+            idxHead++;
+
+            //update each of its neighbors
+            for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                for (int yOffset = -1; yOffset <= 1; yOffset++) {
+                    int nbX = x + xOffset;
+                    int nbY = y + yOffset;
+                    if (nbX < 0 || nbY < 0 || nbX >= map.length || nbY >= map[0].length) {
+                        continue; //out of range
+                    }
+                    if (xOffset == 0 && yOffset == 0) {
+                        continue;
+                    }
+                    //NOW valid indexes
+                    if (map[nbX][nbY] == 0 && !visited[nbX][nbY]) {//not blocks
+                        visited[nbX][nbY] = true;
+                        int newval = res[x][y] + 1;
+                        res[nbX][nbY] = newval;
+                        idxTail++;
+                        queueX[idxTail] = nbX;
+                        queueY[idxTail] = nbY;
+
+                    }
+                }
+            }
+
+        }
+
         return res;
     }
 }
